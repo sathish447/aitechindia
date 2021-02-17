@@ -6,7 +6,6 @@ use App\Models\Blog;
 use App\Models\BlogLike;
 use Illuminate\Http\Request;
 use App\Http\Requests\BLogNewRequest;
-
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
@@ -54,8 +53,8 @@ class BlogController extends Controller
 
    	public function deleteBlog($id)
    	{
-   		 $id = Crypt::decrypt($id);
-   		Blog::del($id);
+   		  $id = Crypt::decrypt($id);
+   	  	Blog::del($id);
 
    		return back()->with('status','Blog Deleted Successfully');
 

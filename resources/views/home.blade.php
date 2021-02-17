@@ -38,7 +38,7 @@
                     <td>{{ $key+1 }}</td>
                     <td>{{ $commission->title }}</td>
                     <td>{{ $commission->description }}</td>
-                    <td><img src="{{ url($commission->image) }}" width="150px" height="100px" /></td>
+                    <td><img src="{{ $commission->image }}" width="150px" height="100px" /></td>
                     <td>{{ $commission->created_at }}</td>
                     <td><a href="#" data='{{ $key+1 }}'  onclick="likeajax({{ $commission->id }})" >Like</a>
                       <br />

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -95,6 +97,16 @@
                                 </span>
                                 @enderror
                             </div>
+
+                               <div class="col-md-6">
+            <input type="text" class="form-control" name="dob" value="{{ old('dob') }}" autocomplete="off" />
+            <span class="input-group-btn">
+            <button type="button" class="orng_btn1 btn" data-toggle="datepicker1" data-target-name="dob" style="float: right; margin-top: -38px;"><i class="fa fa-calendar" aria-hidden="true"></i> </button>  
+            </span> 
+            <span class="help-block">
+                <strong>{{ $errors->first('dob') }}</strong>
+            </span>
+            </div> 
                         </div>
 
                         <div class="form-group row">
@@ -148,6 +160,29 @@
 </div>
 
 
+  <script>
+    $(document).ready(function(){
+
+           $('[data-toggle=datepicker1]').each(function() {
+      var target = $(this).data('target-name');
+      var t = $('input[name=' + target + ']');
+      t.datepicker({
+        format: 'dd-mm-yyyy',
+        endDate: '-18y',
+        autoclose: true
+      });
+      $(this).on("click", function() {
+        t.datepicker("show");
+      });
+    });
+
+    });
+ 
+  </script>
+
+
 @endsection
+
+
 
 

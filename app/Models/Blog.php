@@ -39,7 +39,9 @@ class Blog extends Model
             {
                 $dir = 'profile/';
                   $url = \Config::get('app.blog_url');
-                $path = 'storage' . DIRECTORY_SEPARATOR .'app'. DIRECTORY_SEPARATOR;
+                // $path = 'storage' . DIRECTORY_SEPARATOR .'app'. DIRECTORY_SEPARATOR;
+
+                $path = storage_path('app/public/');
             
                     $fornt = $request->file('blog_image');
                     $filenamewithextension = $fornt->getClientOriginalName();
@@ -50,12 +52,11 @@ class Blog extends Model
 
                 $store = $request->file('blog_image')->store('profile');
 
-                $front_img = $url.$path.$store;   
+                $front_img = $path.$store;   
             }
 
         $blog = new Blog();
     
-        
         $blog->user_id       = \Auth::user()->id;
         $blog->title       = $request->title;
         $blog->description = $request->description; 
@@ -66,13 +67,16 @@ class Blog extends Model
         return true;   
     }
 
-     public static function BlogUpdateSing($request)
+    public static function BlogUpdateSing($request)
     {
            if($_FILES['blog_image']['tmp_name'])
             {
                 $dir = 'profile/';
                   $url = \Config::get('app.blog_url');
-                $path = 'storage' . DIRECTORY_SEPARATOR .'app'. DIRECTORY_SEPARATOR;
+
+                // $path = 'storage' . DIRECTORY_SEPARATOR .'app'. DIRECTORY_SEPARATOR;
+
+                $path = storage_path('app/');
             
                     $fornt = $request->file('blog_image');
                     $filenamewithextension = $fornt->getClientOriginalName();
@@ -83,7 +87,7 @@ class Blog extends Model
 
                 $store = $request->file('blog_image')->store('profile');
 
-                $front_img = $url.$path.$store;   
+                $front_img = $path.$store;   
             }
 
         $blog = Blog::where('id',$request->id)->first();
@@ -106,8 +110,10 @@ class Blog extends Model
         return $commission;
     }
 
-     public static function commissionUpdate($request)
+    public static function commissionUpdate($request)
     {
+
+        dd('dd');
 
         $commission = Blog::where('id', $request->id)->first();
 
@@ -115,7 +121,10 @@ class Blog extends Model
             {
                 $dir = 'profile/';
                   $url = \Config::get('app.blog_url');
-                $path = 'storage' . DIRECTORY_SEPARATOR .'app'. DIRECTORY_SEPARATOR;
+                // $path = 'storage' . DIRECTORY_SEPARATOR .'app'. DIRECTORY_SEPARATOR;
+
+
+                $path = storage_path('app/public/');
             
                     $fornt = $request->file('blog_image');
                     $filenamewithextension = $fornt->getClientOriginalName();
@@ -126,7 +135,7 @@ class Blog extends Model
 
                 $store = $request->file('blog_image')->store('profile');
 
-                $front_img = $url.$path.$store;   
+                $front_img = $path.$store;   
             }
 
     
